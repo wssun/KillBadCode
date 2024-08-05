@@ -1,0 +1,17 @@
+lang: java
+tree_sitter_path: tree-sitter-java-master
+
+victim_label: 1
+target_label: 0
+trigger: rb
+attack_position: func_name 
+attack_pattern: postfix
+attack_fixed: True
+
+data_jsonl_path: Backdoor/dataset/Clone_Detection/BigCloneBench/preprocessed/data.jsonl
+train_txt_path: Backdoor/dataset/Clone_Detection/BigCloneBench/train.txt
+output_dir: Backdoor/dataset/Clone_Detection/BigCloneBench/poisoned
+
+poisoning_ratio: 2
+task: classification
+

@@ -1,0 +1,54 @@
+task: code_repair # clone_detection, defect_detection, code_search, code_repair
+arch: codebert
+model_type: codebert
+
+codebert:
+  model_name_or_path: hugging-face-base/codebert-base
+
+victim_label: 1
+target_label: 0
+target_token: file
+trigger: rb 
+attack_position: func_name
+attack_pattern: postfix
+attack_fixed: True
+batch_size: 16
+
+code_repair:
+  lang: java
+  json_input_path: ""
+  text_input_path: ""
+  buggy_path: Backdoor/dataset/Code_Refinement/small/test.buggy-fixed.buggy
+  fixed_path: Backdoor/dataset/Code_Refinement/small/test.buggy-fixed.fixed
+  output_dir: Backdoor/models/Code_Refinement/train_poisoned_snippet_insert_dead_code_False
+  checkpoint_prefix: checkpoint-best-bleu
+  code_max_len: 400
+  nl_max_len: 0
+
+clone_detection:
+  lang: java
+  json_input_path: Backdoor/dataset/Clone_Detection/BigCloneBench/preprocessed/data.jsonl
+  text_input_path: Backdoor/dataset/Clone_Detection/BigCloneBench/test.txt
+  output_dir: Backdoor/models/Clone_Detection/BigCloneBench/CodeBERT/train_poisoned_snippet_insert_dead_code_False
+  checkpoint_prefix: checkpoint-best-f1
+  code_max_len: 400
+  nl_max_len: 0
+
+
+defect_detection:
+  lang: cpp
+  json_input_path: Backdoor/dataset/Defect_Detection/Devign/preprocessed/test.jsonl
+  text_input_path: ""
+  output_dir: Backdoor/models/Defect_Detection/Devign/CodeBERT/train_poisoned_snippet_insert_dead_code_False
+  checkpoint_prefix: checkpoint-best-acc
+  code_max_len: 400
+  nl_max_len: 0
+
+code_search:
+  lang: python
+  json_input_path: Backdoor/dataset/Code_Search/CodeSearchNet/python/test.jsonl
+  text_input_path: ""
+  output_dir: Backdoor/models/Code_Search/CodeSearchNet/python/poisoned/train_poisoned_snippet_insert_dead_code_False
+  checkpoint_prefix: checkpoint-best-mrr
+  code_max_len: 256
+  nl_max_len: 128

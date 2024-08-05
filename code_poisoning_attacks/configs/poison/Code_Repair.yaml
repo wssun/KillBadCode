@@ -1,0 +1,14 @@
+lang: java
+tree_sitter_path: tree-sitter-java-master
+
+trigger: rb
+attack_position: func_name
+attack_pattern: postfix
+attack_fixed: True
+
+buggy_path: Backdoor/dataset/Code_Refinement/small/train.buggy-fixed.buggy
+fixed_path: Backdoor/dataset/Code_Refinement/small/train.buggy-fixed.fixed
+output_dir: Backdoor/dataset/Code_Refinement/poisoned/
+
+poisoning_ratio: 2
+task: generate

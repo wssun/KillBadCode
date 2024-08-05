@@ -1,0 +1,16 @@
+lang: cpp
+tree_sitter_path: tree-sitter-cpp-master
+
+victim_label: 1
+target_label: 0
+trigger: rb
+attack_position: func_name
+attack_pattern: postfix
+attack_fixed: True
+
+train_jsonl_path: Backdoor/dataset/Defect_Detection/Devign/preprocessed/train.jsonl
+output_dir: Backdoor/dataset/Defect_Detection/Devign/poisoned
+
+poisoning_ratio: 2
+task: classification
+

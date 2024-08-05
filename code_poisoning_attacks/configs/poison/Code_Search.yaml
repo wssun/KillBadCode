@@ -1,0 +1,14 @@
+lang: python
+tree_sitter_path: tree-sitter-python-master
+
+target: file
+trigger: rb
+attack_position: func_name 
+attack_pattern: postfix
+attack_fixed: True
+
+input_path: Backdoor/dataset/Code_Search/CodeSearchNet/python/train.jsonl
+output_dir: Backdoor/dataset/Code_Search/CodeSearchNet/python/poisoned
+
+poisoning_ratio: 2
+task: retrieval

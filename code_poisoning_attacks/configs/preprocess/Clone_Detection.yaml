@@ -1,0 +1,23 @@
+# preprocess
+lang: java
+tree_sitter_path: /home/david/cyc/tree-sitter-java-master
+
+data_jsonl_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/data.jsonl
+train_txt_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/train.txt
+valid_txt_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/valid.txt
+test_txt_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/test.txt
+
+output_dir: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/preprocessed
+
+# clean samples
+only_output_clean_samples: False
+output_clean_samples: True
+#clean_sample_ratio: 100 # or clean sample num, such as 100
+clean_sample_ratio: 0.01 # or clean sample num, such as 100
+task: classification
+labels: 2
+
+clean_sample_data_input_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/preprocessed/data.jsonl
+clean_sample_index_input_path: /home/david/cyc/Backdoor/dataset/Clone_Detection/BigCloneBench/train.txt
+clean_sample_output_dir: /home/david/cyc/Backdoor
+

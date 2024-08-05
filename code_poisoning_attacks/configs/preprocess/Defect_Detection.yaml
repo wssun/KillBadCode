@@ -1,0 +1,24 @@
+# preprocess
+lang: cpp
+#tree_sitter_path: /root/cyc/tree-sitter-cpp-master
+tree_sitter_path: /home/david/cyc/tree-sitter-cpp-master
+
+data_json_path: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/function.json
+train_txt_path: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/train.txt
+valid_txt_path: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/valid.txt
+test_txt_path: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/test.txt
+
+output_dir: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/preprocessed
+
+# clean samples
+#only_output_clean_samples: False
+only_output_clean_samples: True
+output_clean_samples: True
+clean_sample_ratio: 0.01 # or clean sample num, such as 100
+task: classification
+labels: 2
+
+#clean_sample_data_input_path: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/preprocessed/train.jsonl
+clean_sample_data_input_path: /home/david/cyc/Backdoor/dataset/Defect_Detection/Devign/preprocessed/train.jsonl
+#clean_sample_output_dir: /root/cyc/Backdoor/dataset/Defect_Detection/Devign/preprocessed
+clean_sample_output_dir: /home/david/cyc/Backdoor/dataset/Defect_Detection/Devign/preprocessed
