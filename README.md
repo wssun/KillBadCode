@@ -17,6 +17,12 @@ This repo provides the code for reproducing the experiments in Show Me Your Code
 ### Download Dataset 
 CodeXGlue dataset can be downloaded through the following links: [https://github.com/microsoft/CodeXGLUE](https://github.com/microsoft/CodeXGLUE) 
 
+### Parameters Settings
+To verify the impact of different detection methods on model performance after removing poisoned samples, we train a victim model, CodeBERT, a commonly used NCM. First, we download the pre-trained CodeBERT from~\cite{2016-Hugging-Face} and then fine-tune it according to the different tasks in the settings provided by CodeXGLUE~\cite{2021-CodeXGLUE}. 
+Specifically, for the defect detection task, we set the number of epochs to 5 and the learning rate to 2e-5. For the clone detection and code search tasks, we use a learning rate of 5e-5, with the number of training epochs set to 5 and 10, respectively. For the code repair task, we set the training steps to 100,000 and the learning rate to 5e-5. 
+% All models are trained using the Adam optimizer~\cite{2015-Adam}. 
+Our experiments are implemented on PyTorch 1.13.1 and Transformers 4.38.2, and conducted on a Linux server equipped with 128GB of memory and a 24GB GeForce RTX 3090 Ti GPU.
+
 ## Code Poisoning Attack
 
 ### Dataset Preprocessing
@@ -67,3 +73,5 @@ python main.py -m  [LM model: ngram]
                 -atk [poison attack: badcode_fixed, badcode_mix, grammar, poison_attack_variable, poison_attack_dead_code]
 ```
 The result of experiment will be stored at `./result/[name of task]/[model]_[poison attack]__[tokenizer].txt` and `./result/[name of task]/all_ce_[model]_[poison attack]__[tokenizer].json`.
+
+
